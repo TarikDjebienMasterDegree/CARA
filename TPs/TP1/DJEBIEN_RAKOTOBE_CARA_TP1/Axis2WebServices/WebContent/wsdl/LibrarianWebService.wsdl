@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservices.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservices.com" xmlns:intf="http://webservices.com" xmlns:tns1="http://dto.webservices.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservices.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.webservices.com"/>
+   <element name="getUsers">
+    <complexType/>
+   </element>
+   <element name="getUsersResponse">
+    <complexType>
+     <sequence>
+      <element name="getUsersReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_anyType">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+   <element name="getBookDescription">
+    <complexType>
+     <sequence>
+      <element name="isbn" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBookDescriptionResponse">
+    <complexType>
+     <sequence>
+      <element name="getBookDescriptionReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUserDescription">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUserDescriptionResponse">
+    <complexType>
+     <sequence>
+      <element name="getUserDescriptionReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addBook">
+    <complexType>
+     <sequence>
+      <element name="author" type="xsd:string"/>
+      <element name="title" type="xsd:string"/>
+      <element name="editor" type="xsd:string"/>
+      <element name="borrower" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addBookResponse">
+    <complexType>
+     <sequence>
+      <element name="addBookReturn" type="tns1:Book"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteBook">
+    <complexType>
+     <sequence>
+      <element name="isbn" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteBookResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteBookReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addUser">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+      <element name="age" type="xsd:int"/>
+      <element name="address" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addUserResponse">
+    <complexType>
+     <sequence>
+      <element name="addUserReturn" type="tns1:User"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteUser">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteUserResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteUserReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="sayHello">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="sayHelloResponse">
+    <complexType>
+     <sequence>
+      <element name="sayHelloReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBooks">
+    <complexType>
+     <sequence>
+      <element name="author" type="xsd:string"/>
+      <element name="title" type="xsd:string"/>
+      <element name="editor" type="xsd:string"/>
+      <element name="borrower" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBooksResponse">
+    <complexType>
+     <sequence>
+      <element name="getBooksReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://dto.webservices.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://webservices.com"/>
+   <complexType name="Book">
+    <sequence>
+     <element name="author" nillable="true" type="xsd:string"/>
+     <element name="borrower" nillable="true" type="xsd:string"/>
+     <element name="editor" nillable="true" type="xsd:string"/>
+     <element name="isbn" nillable="true" type="xsd:long"/>
+     <element name="title" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="User">
+    <sequence>
+     <element name="address" nillable="true" type="xsd:string"/>
+     <element name="age" nillable="true" type="xsd:int"/>
+     <element name="id" nillable="true" type="xsd:long"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="addUserRequest">
+
+      <wsdl:part element="impl:addUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteUserRequest">
+
+      <wsdl:part element="impl:deleteUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteUserResponse">
+
+      <wsdl:part element="impl:deleteUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteBookRequest">
+
+      <wsdl:part element="impl:deleteBook" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addBookResponse">
+
+      <wsdl:part element="impl:addBookResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserDescriptionRequest">
+
+      <wsdl:part element="impl:getUserDescription" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteBookResponse">
+
+      <wsdl:part element="impl:deleteBookResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="sayHelloResponse">
+
+      <wsdl:part element="impl:sayHelloResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUsersResponse">
+
+      <wsdl:part element="impl:getUsersResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBookDescriptionRequest">
+
+      <wsdl:part element="impl:getBookDescription" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addBookRequest">
+
+      <wsdl:part element="impl:addBook" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="sayHelloRequest">
+
+      <wsdl:part element="impl:sayHello" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserDescriptionResponse">
+
+      <wsdl:part element="impl:getUserDescriptionResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addUserResponse">
+
+      <wsdl:part element="impl:addUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBooksResponse">
+
+      <wsdl:part element="impl:getBooksResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUsersRequest">
+
+      <wsdl:part element="impl:getUsers" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBookDescriptionResponse">
+
+      <wsdl:part element="impl:getBookDescriptionResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBooksRequest">
+
+      <wsdl:part element="impl:getBooks" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="LibrarianWebService">
+
+      <wsdl:operation name="getUsers">
+
+         <wsdl:input message="impl:getUsersRequest" name="getUsersRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getUsersResponse" name="getUsersResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBookDescription">
+
+         <wsdl:input message="impl:getBookDescriptionRequest" name="getBookDescriptionRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getBookDescriptionResponse" name="getBookDescriptionResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserDescription">
+
+         <wsdl:input message="impl:getUserDescriptionRequest" name="getUserDescriptionRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getUserDescriptionResponse" name="getUserDescriptionResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addBook">
+
+         <wsdl:input message="impl:addBookRequest" name="addBookRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addBookResponse" name="addBookResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteBook">
+
+         <wsdl:input message="impl:deleteBookRequest" name="deleteBookRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteBookResponse" name="deleteBookResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addUser">
+
+         <wsdl:input message="impl:addUserRequest" name="addUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addUserResponse" name="addUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteUser">
+
+         <wsdl:input message="impl:deleteUserRequest" name="deleteUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteUserResponse" name="deleteUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sayHello">
+
+         <wsdl:input message="impl:sayHelloRequest" name="sayHelloRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:sayHelloResponse" name="sayHelloResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBooks">
+
+         <wsdl:input message="impl:getBooksRequest" name="getBooksRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getBooksResponse" name="getBooksResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="LibrarianWebServiceSoapBinding" type="impl:LibrarianWebService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getUsers">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getUsersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getUsersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBookDescription">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBookDescriptionRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBookDescriptionResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserDescription">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getUserDescriptionRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getUserDescriptionResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addBook">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addBookRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addBookResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteBook">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteBookRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteBookResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sayHello">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="sayHelloRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="sayHelloResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBooks">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBooksRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBooksResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="LibrarianWebServiceService">
+
+      <wsdl:port binding="impl:LibrarianWebServiceSoapBinding" name="LibrarianWebService">
+
+         <wsdlsoap:address location="http://localhost:8080/Axis2WebServices/services/LibrarianWebService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

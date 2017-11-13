@@ -1,0 +1,227 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from LibrarianWebServiceService WSDL service -->
+
+  <service name="LibrarianWebService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webservices.com"/>
+      <parameter name="wsdlServiceElement" value="LibrarianWebServiceService"/>
+      <parameter name="schemaQualified" value="http://dto.webservices.com,http://webservices.com"/>
+      <parameter name="wsdlServicePort" value="LibrarianWebService"/>
+      <parameter name="className" value="com.webservices.LibrarianWebServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="LibrarianWebService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getUsers" qname="operNS:getUsers" xmlns:operNS="http://webservices.com" returnQName="retNS:getUsersReturn" xmlns:retNS="http://webservices.com" returnType="rtns:ArrayOf_xsd_anyType" xmlns:rtns="http://webservices.com" returnItemQName="tns:item" xmlns:tns="http://webservices.com" soapAction="" >
+      </operation>
+      <operation name="getBookDescription" qname="operNS:getBookDescription" xmlns:operNS="http://webservices.com" returnQName="retNS:getBookDescriptionReturn" xmlns:retNS="http://webservices.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:isbn" xmlns:pns="http://webservices.com" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getUserDescription" qname="operNS:getUserDescription" xmlns:operNS="http://webservices.com" returnQName="retNS:getUserDescriptionReturn" xmlns:retNS="http://webservices.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:name" xmlns:pns="http://webservices.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addBook" qname="operNS:addBook" xmlns:operNS="http://webservices.com" returnQName="retNS:addBookReturn" xmlns:retNS="http://webservices.com" returnType="rtns:Book" xmlns:rtns="http://dto.webservices.com" soapAction="" >
+        <parameter qname="pns:author" xmlns:pns="http://webservices.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:title" xmlns:pns="http://webservices.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:editor" xmlns:pns="http://webservices.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:borrower" xmlns:pns="http://webservices.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteBook" qname="operNS:deleteBook" xmlns:operNS="http://webservices.com" returnQName="retNS:deleteBookReturn" xmlns:retNS="http://webservices.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:isbn" xmlns:pns="http://webservices.com" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addUser" qname="operNS:addUser" xmlns:operNS="http://webservices.com" returnQName="retNS:addUserReturn" xmlns:retNS="http://webservices.com" returnType="rtns:User" xmlns:rtns="http://dto.webservices.com" soapAction="" >
+        <parameter qname="pns:name" xmlns:pns="http://webservices.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:age" xmlns:pns="http://webservices.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:address" xmlns:pns="http://webservices.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteUser" qname="operNS:deleteUser" xmlns:operNS="http://webservices.com" returnQName="retNS:deleteUserReturn" xmlns:retNS="http://webservices.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://webservices.com" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="sayHello" qname="operNS:sayHello" xmlns:operNS="http://webservices.com" returnQName="retNS:sayHelloReturn" xmlns:retNS="http://webservices.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:name" xmlns:pns="http://webservices.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getBooks" qname="operNS:getBooks" xmlns:operNS="http://webservices.com" returnQName="retNS:getBooksReturn" xmlns:retNS="http://webservices.com" returnType="rtns:ArrayOf_xsd_anyType" xmlns:rtns="http://webservices.com" returnItemQName="tns:item" xmlns:tns="http://webservices.com" soapAction="" >
+        <parameter qname="pns:author" xmlns:pns="http://webservices.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:title" xmlns:pns="http://webservices.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:editor" xmlns:pns="http://webservices.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:borrower" xmlns:pns="http://webservices.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getUserDescription deleteBook addUser deleteUser sayHello addBook getBooks getBookDescription getUsers"/>
+
+      <typeMapping
+        xmlns:ns="http://webservices.com"
+        qname="ns:>getUserDescription"
+        type="java:com.webservices.GetUserDescription"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices.com"
+        qname="ns:>sayHelloResponse"
+        type="java:com.webservices.SayHelloResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices.com"
+        qname="ns:>getUserDescriptionResponse"
+        type="java:com.webservices.GetUserDescriptionResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices.com"
+        qname="ns:>addBook"
+        type="java:com.webservices.AddBook"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices.com"
+        qname="ns:>getBookDescriptionResponse"
+        type="java:com.webservices.GetBookDescriptionResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://webservices.com"
+        qname="ns:ArrayOf_xsd_anyType"
+        type="java:java.lang.Object[]"
+        innerType="cmp-ns:anyType" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices.com"
+        qname="ns:>addUserResponse"
+        type="java:com.webservices.AddUserResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices.com"
+        qname="ns:>getUsersResponse"
+        type="java:com.webservices.GetUsersResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dto.webservices.com"
+        qname="ns:Book"
+        type="java:com.webservices.dto.Book"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices.com"
+        qname="ns:>deleteBook"
+        type="java:com.webservices.DeleteBook"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dto.webservices.com"
+        qname="ns:User"
+        type="java:com.webservices.dto.User"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices.com"
+        qname="ns:>deleteBookResponse"
+        type="java:com.webservices.DeleteBookResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices.com"
+        qname="ns:>sayHello"
+        type="java:com.webservices.SayHello"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices.com"
+        qname="ns:>deleteUserResponse"
+        type="java:com.webservices.DeleteUserResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices.com"
+        qname="ns:>addBookResponse"
+        type="java:com.webservices.AddBookResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices.com"
+        qname="ns:>deleteUser"
+        type="java:com.webservices.DeleteUser"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices.com"
+        qname="ns:>getBooksResponse"
+        type="java:com.webservices.GetBooksResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices.com"
+        qname="ns:>getUsers"
+        type="java:com.webservices.GetUsers"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices.com"
+        qname="ns:>getBooks"
+        type="java:com.webservices.GetBooks"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices.com"
+        qname="ns:>getBookDescription"
+        type="java:com.webservices.GetBookDescription"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices.com"
+        qname="ns:>addUser"
+        type="java:com.webservices.AddUser"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>
